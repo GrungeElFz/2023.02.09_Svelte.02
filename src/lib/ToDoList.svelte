@@ -3,8 +3,8 @@
 </script>
 
 <ul>
-  {#each toDoLists as toDoList, index (toDoList.id) }
+  {#each toDoLists as { id, title }, index (id) }
     {@const number = index + 1}
-    <li>{number}. {toDoList.title}</li>
+    <li>{number}. {title}</li>
   {/each}
 </ul>
