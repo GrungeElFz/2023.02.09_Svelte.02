@@ -15,6 +15,8 @@
 				completed: false
 			}
 		];
+
+		inputText = '';
 	}
 </script>
 
