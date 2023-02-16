@@ -21,6 +21,7 @@
   ];
 </script>
 
+<h2>{toDoLists.length} Tasks</h2>
 <ToDoList {toDoLists} />
 
 <style>
