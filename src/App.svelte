@@ -19,10 +19,16 @@
 			completed: false
 		}
 	];
+
+	function handleToDoLists(event) {
+		// console.log(event.detail.title);
+	};
 </script>
 
 <h2>{toDoLists.length} Tasks</h2>
-<ToDoList bind:toDoLists />
+<ToDoList {toDoLists}
+	on:addtodo={handleToDoLists}
+/>
 
 <style>
 </style>

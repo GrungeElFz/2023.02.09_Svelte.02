@@ -1,22 +1,14 @@
 <script>
-	import { v4 as uuid } from 'uuid';
+	import { createEventDispatcher } from "svelte";
 	export let toDoLists = [];
 
 	let inputText = '';
+	const dispatch = createEventDispatcher();
+
 	function handleToDoLists() {
-		toDoLists = toDoLists;
-
-		if (!inputText) return;
-		toDoLists = [
-			...toDoLists,
-			{
-				id: uuid(),
-				title: inputText,
-				completed: false
-			}
-		];
-
-		inputText = '';
+		dispatch('addtodo', {
+			title: inputText
+		});
 	}
 </script>
 
