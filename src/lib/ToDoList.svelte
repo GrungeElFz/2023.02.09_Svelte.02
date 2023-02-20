@@ -1,4 +1,5 @@
 <script>
+	import Button from './Button.svelte';
 	import { createEventDispatcher } from "svelte";
 	export let toDoLists = [];
 
@@ -22,6 +23,6 @@
 
 	<form class="toDoLists-form" on:submit|preventDefault={handleToDoLists}>
 		<input bind:value={inputText} />
-		<button type="submit" disabled={!inputText}>Add</button>
+		<Button type="submit" disabled={!inputText}>Add</Button>
 	</form>
 </div>
