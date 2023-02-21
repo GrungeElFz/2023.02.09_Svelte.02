@@ -21,11 +21,14 @@
 	];
 
 	function handleToDoLists(event) {
-			toDoLists.push({
-			id: uuid(),
-			title: event.detail.title,
-			completed: false
-		});
+			toDoLists = [
+				...toDoLists,
+				{
+					id: uuid(),
+					title: event.detail.title,
+					completed: false
+				}
+			];
 
 		/*
 		• toDoLists is assigned to itself in order to trigger a reactivity update in the Svelte component.

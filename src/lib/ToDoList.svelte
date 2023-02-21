@@ -1,3 +1,5 @@
+<svelte:options immutable={true} />
+
 <script>
 	import Button from './Button.svelte';
 	import { createEventDispatcher } from "svelte";
@@ -12,10 +14,9 @@
 			{title: inputText},
 			{cancelable: true}
 		);
-		
+
 		if (isNotCancelled) {
 			inputText = '';
-			// console.log('Backfired');
 		};
 	}
 </script>
