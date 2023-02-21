@@ -1,8 +1,8 @@
 <script>
 	import Button from './Button.svelte';
 	import { createEventDispatcher } from "svelte";
-	export let toDoLists = [];
 
+	export let toDoLists = [];
 	let inputText = '';
 	const dispatch = createEventDispatcher();
 

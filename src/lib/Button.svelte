@@ -3,19 +3,21 @@
   export let shadow = false;
   export let bgColor = 'inherit';
   export let textColor = 'inherit';
+  
   let isLeftHover;
 </script>
 
 
 
 <button
-  on:click|preventDefault
+  on:click
   style:--buttonBgColor={bgColor}
   style:--buttonTextColor={textColor}
   class:size-sm={size === 'small'}
   class:size-lg={size === 'large'}
   class:has-left={$$slots.leftContent}
-  class:shadow={shadow}
+  class:shadow
+  {...$$restProps}
 >
   {#if $$slots.leftContent}
     <div 
