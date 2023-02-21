@@ -7,9 +7,16 @@
 	const dispatch = createEventDispatcher();
 
 	function handleToDoLists() {
-		dispatch('addtodo', {
-			title: inputText
-		});
+		const isNotCancelled = dispatch(
+			'addtodo', 
+			{title: inputText},
+			{cancelable: true}
+		);
+		
+		if (isNotCancelled) {
+			inputText = '';
+			// console.log('Backfired');
+		};
 	}
 </script>
 

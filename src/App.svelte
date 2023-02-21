@@ -21,6 +21,7 @@
 	];
 
 	function handleToDoLists(event) {
+		event.preventDefault;
 		// console.log(event.detail.title);
 	};
 </script>
