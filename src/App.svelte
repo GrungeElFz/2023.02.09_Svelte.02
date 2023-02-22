@@ -21,14 +21,14 @@
 	];
 
 	function handleToDoLists(event) {
-			toDoLists = [
-				...toDoLists,
-				{
-					id: uuid(),
-					title: event.detail.title,
-					completed: false
-				}
-			];
+		toDoLists = [
+			...toDoLists,
+			{
+				id: uuid(),
+				title: event.detail.title,
+				completed: false
+			}
+		];
 
 		/*
 		• toDoLists is assigned to itself in order to trigger a reactivity update in the Svelte component.
@@ -36,11 +36,15 @@
 		• By assigning toDoLists to itself, Svelte is able to detect the change and update the component accordingly.
 		*/
 		toDoLists = toDoLists;
-	};
+	}
+
+	function handleRemoveToDoLists(event) {
+		toDoLists = toDoLists.filter((toDoItem) => toDoItem.id !== event.detail.id);
+	}
 </script>
 
 <h2>{toDoLists.length} Tasks</h2>
-<ToDoList {toDoLists} on:addtodo={handleToDoLists} />
+<ToDoList {toDoLists} on:addtodo={handleToDoLists} on:removetodo={handleRemoveToDoLists} />
 
 <style>
 </style>

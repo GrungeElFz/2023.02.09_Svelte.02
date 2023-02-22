@@ -2,30 +2,37 @@
 
 <script>
 	import Button from './Button.svelte';
-	import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher } from 'svelte';
 
 	export let toDoLists = [];
 	let inputText = '';
 	const dispatch = createEventDispatcher();
 
 	function handleToDoLists() {
-		const isNotCancelled = dispatch(
-			'addtodo', 
-			{title: inputText},
-			{cancelable: true}
-		);
+		const isNotCancelled = dispatch('addtodo', { title: inputText }, { cancelable: true });
 
 		if (isNotCancelled) {
 			inputText = '';
-		};
+		}
+	}
+
+	function handleRemoveToDoLists(id) {
+		dispatch('removetodo', {
+			id
+		});
 	}
 </script>
 
 <div class="toDoLists-wrapper">
 	<ul>
-		{#each toDoLists as { id, title }, index (id)}
-			{@const number = index + 1}
-			<li>{number}. {title}</li>
+		{#each toDoLists as { id, title, completed } (id)}
+			<li>
+				<label>
+					<input type="checkbox" checked={completed} />
+					{title}
+				</label>
+				<button on:click={() => handleRemoveToDoLists(id)}>Remove</button>
+			</li>
 		{/each}
 	</ul>
 
