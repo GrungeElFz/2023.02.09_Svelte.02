@@ -41,10 +41,24 @@
 	function handleRemoveToDoLists(event) {
 		toDoLists = toDoLists.filter((toDoItem) => toDoItem.id !== event.detail.id);
 	}
+
+	function handleToggleToDoLists(event) {
+		toDoLists = toDoLists.map((toDoItem) => {
+			if (toDoItem.id === event.detail.id) {
+				return { ...toDoItem, completed: event.detail.value };
+			}
+			return { ...toDoItem };
+		});
+	}
 </script>
 
 <h2>{toDoLists.length} Tasks</h2>
-<ToDoList {toDoLists} on:addtodo={handleToDoLists} on:removetodo={handleRemoveToDoLists} />
+<ToDoList
+	{toDoLists}
+	on:addtodo={handleToDoLists}
+	on:removetodo={handleRemoveToDoLists}
+	on:toggletodo={handleToggleToDoLists}
+/>
 
 <style>
 </style>
