@@ -8,7 +8,7 @@
 	let inputText = '';
 	const dispatch = createEventDispatcher();
 
-	function handleToDoLists() {
+	function handleAddToDoLists() {
 		const isNotCancelled = dispatch('addtodo', { title: inputText }, { cancelable: true });
 
 		if (isNotCancelled) {
@@ -50,7 +50,7 @@
 		{/each}
 	</ul>
 
-	<form class="toDoLists-form" on:submit|preventDefault={handleToDoLists}>
+	<form class="toDoLists-form" on:submit|preventDefault={handleAddToDoLists}>
 		<input bind:value={inputText} />
 		<Button type="submit" disabled={!inputText}>Add</Button>
 	</form>

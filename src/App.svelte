@@ -20,7 +20,7 @@
 		}
 	];
 
-	function handleToDoLists(event) {
+	function handleAddToDoLists(event) {
 		toDoLists = [
 			...toDoLists,
 			{
@@ -55,7 +55,7 @@
 <h2>{toDoLists.length} Tasks</h2>
 <ToDoList
 	{toDoLists}
-	on:addtodo={handleToDoLists}
+	on:addtodo={handleAddToDoLists}
 	on:removetodo={handleRemoveToDoLists}
 	on:toggletodo={handleToggleToDoLists}
 />
