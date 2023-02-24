@@ -5,11 +5,23 @@
 	import { createEventDispatcher } from 'svelte';
 
 	export let toDoLists = [];
+	export function clearInput() {
+		inputText = '';
+	}
+
 	let inputText = '';
 	const dispatch = createEventDispatcher();
 
 	function handleAddToDoLists() {
-		const isNotCancelled = dispatch('addtodo', { title: inputText }, { cancelable: true });
+		const isNotCancelled = dispatch(
+			'addtodo',
+			{
+				title: inputText
+			},
+			{
+				cancelable: true
+			}
+		);
 
 		if (isNotCancelled) {
 			inputText = '';

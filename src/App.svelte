@@ -2,6 +2,7 @@
 	import ToDoList from './lib/ToDoList.svelte';
 	import { v4 as uuid } from 'uuid';
 
+	let toDoListBox;
 	let toDoLists = [
 		{
 			id: uuid(),
@@ -21,21 +22,20 @@
 	];
 
 	function handleAddToDoLists(event) {
-		toDoLists = [
-			...toDoLists,
-			{
-				id: uuid(),
-				title: event.detail.title,
-				completed: false
-			}
-		];
+		event.preventDefault();
 
-		/*
-		• toDoLists is assigned to itself in order to trigger a reactivity update in the Svelte component.
-		• When a new task is added to the toDoLists array, the component needs to know that the array has been updated and should re-render with the new data.
-		• By assigning toDoLists to itself, Svelte is able to detect the change and update the component accordingly.
-		*/
-		toDoLists = toDoLists;
+		setTimeout(() => {
+			toDoLists = [
+				...toDoLists,
+				{
+					id: uuid(),
+					title: event.detail.title,
+					completed: false
+				}
+			];
+
+			toDoListBox.clearInput();
+		}, 1000);
 	}
 
 	function handleRemoveToDoLists(event) {
@@ -55,6 +55,7 @@
 <h2>{toDoLists.length} Tasks</h2>
 <ToDoList
 	{toDoLists}
+	bind:this={toDoListBox}
 	on:addtodo={handleAddToDoLists}
 	on:removetodo={handleRemoveToDoLists}
 	on:toggletodo={handleToggleToDoLists}
