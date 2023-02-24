@@ -60,6 +60,11 @@
 	on:removetodo={handleRemoveToDoLists}
 	on:toggletodo={handleToggleToDoLists}
 />
+<button
+	on:click={() => {
+		toDoListBox.focusInput();
+	}}>Focus input</button
+>
 
 <style>
 </style>
